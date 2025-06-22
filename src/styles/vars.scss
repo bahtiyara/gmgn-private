@@ -1,0 +1,88 @@
+:root {
+	/* Primary */
+	--color-primary: #1bc47d;
+	--color-primary5: rgba(27, 196, 125, 0.5);
+	--color-primary2: rgba(27, 196, 125, 0.2);
+	--color-primary1: rgba(27, 196, 125, 0.1);
+	--color-primary-variant: #1bc47d;
+
+	/* Accent */
+	--color-red: #f24822;
+	--color-red5: #f2482280;
+	--color-red2: #f2482233;
+	--color-red1: #f248221a;
+	--color-red-text: var(--color-red);
+
+	--color-yellow: #ffeb00;
+
+	/* Background */
+	--color-b1: #ffffff;
+	--color-b2: #f5f5f5;
+	--color-b3: #e5e5e5;
+	--color-hover: rgba(0, 0, 0, 0.06);
+	--color-mask: rgba(0, 0, 0, 0.1);
+
+	/* Foreground */
+	--color-f1: rgba(0, 0, 0, 0.8);
+	--color-f1-opaque: #333;
+	--color-f1-inverse: #fff;
+	--color-f2: rgba(0, 0, 0, 0.3);
+	--color-f2-inverse: rgba(255, 255, 255, 0.4);
+	--color-f3: rgba(0, 0, 0, 0.1);
+	--color-f3-inverse: rgba(255, 255, 255, 0.1);
+
+	/* Basic */
+	--color-black: #000;
+	--color-black8: rgba(0, 0, 0, 0.8);
+	--color-black5: rgba(0, 0, 0, 0.5);
+	--color-black8-opaque: #333;
+	--color-white: #fff;
+	--color-white4: rgba(255, 255, 255, 0.4);
+	--color-white1: rgba(255, 255, 255, 0.1);
+	--color-hud: #2c2c2c;
+
+	/* Font family */
+	--fontFamily-primary: 'Switzer-Variable', Microsoft YaHei, -apple-system,
+		BlinkMacSystemFont, 'PingFang SC', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+		'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+body[data-theme='dark'] {
+	color-scheme: dark;
+
+	/* PRIMARY */
+	--color-primary: #1bc47d;
+	--color-primary5: rgba(27, 196, 125, 0.5);
+	--color-primary2: rgba(27, 196, 125, 0.2);
+	--color-primary1: rgba(27, 196, 125, 0.1);
+	--color-primary-variant: #ffffff;
+
+	/* ACCENT */
+	--color-red: #f24822;
+	--color-red5: #f2482280;
+	--color-red2: #f2482233;
+	--color-red1: #f248221a;
+	--color-red-text: #ff6d4d;
+
+	--color-yellow: #ffeb00;
+
+	/* BACKGROUND */
+	--color-b1: #121314;
+	--color-b2: #2a2b2c;
+	--color-b3: #414243;
+	--color-hover: rgba(255, 255, 255, 0.06);
+	--color-mask: rgba(0, 0, 0, 0.5);
+
+	/* FOREGROUND */
+	--color-f1: rgb(240, 245, 245);
+	--color-f1-opaque: #ffffff;
+	--color-f1-inverse: rgba(0, 0, 0, 0.8);
+	--color-f2: rgb(123, 131, 133);
+	--color-f2-inverse: rgba(0, 0, 0, 0.3);
+	--color-f3: rgba(255, 255, 255, 0.1);
+	--color-f3-inverse: rgba(0, 0, 0, 0.1);
+
+	/* SHADOW */
+	--shadow-m: 0 10px 30px rgba(0, 0, 0, 0.3);
+	--shadow-window: 0 2px 14px #00000030, 0 0 0 0.5px var(--color-f3);
+}

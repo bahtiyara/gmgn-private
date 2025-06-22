@@ -1,0 +1,31 @@
+.navBar {
+	height: 59px;
+	display: flex;
+	align-items: center;
+	padding: 0 6px 0 16px;
+	border-bottom: 0.5px solid var(--color-b2);
+}
+
+.logo {
+	cursor: pointer;
+}
+
+.links {
+	display: flex;
+	gap: 16px;
+	padding-left: 16px;
+}
+
+.navLink {
+	line-height: 18px;
+	font-size: 14px;
+	color: var(--color-f2);
+	text-decoration: none;
+	transition: 0.2s color ease-in-out;
+	letter-spacing: -0.2px;
+
+	&.active,
+	&:hover {
+		color: var(--color-f1);
+	}
+}
