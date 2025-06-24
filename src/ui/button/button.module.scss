@@ -1,0 +1,19 @@
+.button {
+	font-weight: 600;
+	padding: 6px 16px;
+	border-radius: 6px;
+	appearance: none;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	min-width: 85px;
+
+	&.primary {
+		background-color: var(--color-white);
+		color: var(--color-b1);
+	}
+	&.secondary {
+		background-color: var(--color-hover);
+		color: var(--color-f1);
+	}
+}

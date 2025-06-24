@@ -1,0 +1,36 @@
+.inputWrapper {
+	background-color: var(--color-b2);
+	display: flex;
+	align-items: center;
+	border-radius: 12px;
+	padding: 10px 12px;
+	border: 1px solid transparent;
+	gap: 6px;
+	transition: 0.2s border-color ease-in-out;
+
+	&:hover,
+	&:focus-within,
+	&:focus {
+		border-color: var(--color-f1);
+	}
+}
+
+.input {
+	flex: 1;
+	appearance: none;
+	border: none;
+	background: transparent;
+	outline: none;
+	position: relative;
+	top: 0.5px;
+	overflow: hidden;
+}
+
+.right {
+	color: var(--color-f2);
+	font-size: 10.3px;
+	padding-right: 2px;
+	letter-spacing: -0.2px;
+	position: relative;
+	bottom: 0.5px;
+}

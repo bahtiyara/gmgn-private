@@ -3,6 +3,7 @@
 
 :root {
 	font-family: var(--fontFamily-primary);
+	letter-spacing: -0.2px;
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
@@ -13,4 +14,25 @@ body {
 	margin: 0;
 	background-color: var(--color-b1);
 	color: var(--color-f1);
+}
+
+input,
+button {
+	font-family: var(--fontFamily-primary);
+	color: var(--color-f1);
+	font-size: 12px;
+
+	&::placeholder {
+		color: var(--color-f2);
+		line-break: anywhere;
+	}
+}
+
+* {
+	box-sizing: border-box;
+}
+
+::selection {
+	background-color: #8bce96;
+	color: var(--color-white);
 }

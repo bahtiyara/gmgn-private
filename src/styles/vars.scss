@@ -68,7 +68,7 @@ body[data-theme='dark'] {
 
 	/* BACKGROUND */
 	--color-b1: #121314;
-	--color-b2: #2a2b2c;
+	--color-b2: rgb(31, 32, 36);
 	--color-b3: #414243;
 	--color-hover: rgba(255, 255, 255, 0.06);
 	--color-mask: rgba(0, 0, 0, 0.5);
@@ -81,6 +81,8 @@ body[data-theme='dark'] {
 	--color-f2-inverse: rgba(0, 0, 0, 0.3);
 	--color-f3: rgba(255, 255, 255, 0.1);
 	--color-f3-inverse: rgba(0, 0, 0, 0.1);
+
+	--color-divider: #1d1d20;
 
 	/* SHADOW */
 	--shadow-m: 0 10px 30px rgba(0, 0, 0, 0.3);
