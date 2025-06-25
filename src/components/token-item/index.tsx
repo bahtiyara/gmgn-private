@@ -1,17 +1,37 @@
 import type { Token } from '@/api';
 import st from './token-item.module.scss';
+import { IconX } from '../footer/icons';
+import { IconSearch } from '@/icons/search';
 
 type Props = {
 	data: Token;
 };
 
+const defaultUrl =
+	'https://images.unsplash.com/photo-1624555130581-1d9cca783bc0?q=80&w=80&h=80&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+
 export function TokenItem({ data }: Props) {
-	const { name, logo, symbol, address } = data;
+	const {
+		name,
+		logo,
+		symbol,
+		address,
+		sniper_count,
+		bot_degen_count,
+		creator_created_open_count,
+		total_fee,
+		progress,
+		top_10_holder_rate,
+		creator_balance_rate,
+		buys_1h,
+		volume_1h,
+		market_cap,
+	} = data;
 
 	return (
 		<div className={st.item}>
 			<div className={st.avatarContainer}>
-				<img className={st.avatar} src={logo} />
+				<img className={st.avatar} src={logo || defaultUrl} />
 			</div>
 			<div className={st.main}>
 				<div className={st.first}>
@@ -38,11 +58,108 @@ export function TokenItem({ data }: Props) {
 							onClick={() => window.navigator.clipboard.writeText(address)}>
 							<span>{startAndEnd(address)}</span>
 							<IconCopy />
-							<div className={st.divider} />
 						</div>
+						<div className={st.divider} />
+						<IconX />
+						<IconSearch width={'14px'} height={'14px'} />
 					</div>
+					{creator_created_open_count > 0 && (
+						<div className={st.field}>
+							<IconCrown />
+							<span>{creator_created_open_count}</span>
+						</div>
+					)}
+					{buys_1h > 0 && (
+						<div className={st.field}>
+							<IconUser />
+							<span>{buys_1h}</span>
+						</div>
+					)}
+					{bot_degen_count > 0 && (
+						<div className={st.field}>
+							<IconBot />
+							<span>{bot_degen_count}</span>
+						</div>
+					)}
+					{total_fee > 0 && (
+						<div className={st.field}>
+							<IconPray />
+							<span>{total_fee.toFixed(5)}</span>
+						</div>
+					)}
 				</div>
-				<div className={st.third}></div>
+				<div className={st.third}>
+					<div className={st.left}>
+						{progress > 0 && (
+							<span style={{ color: 'rgb(158, 229, 181)' }}>
+								{Math.round(progress * 10000) / 100}%
+							</span>
+						)}
+						{top_10_holder_rate > 0 && (
+							<div className={st.field} style={{ color: 'rgb(158, 229, 181)' }}>
+								<svg
+									width="12px"
+									height="12px"
+									viewBox="0 0 20 20"
+									xmlns="http://www.w3.org/2000/svg"
+									fill="currentColor">
+									<path d="M3 14.5788C3 12.3049 4.84336 10.4615 7.11725 10.4615C7.21219 10.4615 7.30085 10.509 7.35351 10.588L9.64173 14.0203C9.86705 14.3583 10.3637 14.3583 10.589 14.0203L12.8772 10.588C12.9299 10.509 13.0185 10.4615 13.1135 10.4615C15.3874 10.4615 17.2307 12.3049 17.2307 14.5788V18.6266C17.2307 18.8328 17.0635 19 16.8573 19H3.37346C3.1672 19 3 18.8328 3 18.6266V14.5788Z"></path>
+									<ellipse
+										cx="10.1155"
+										cy="4.76923"
+										rx="4.26922"
+										ry="4.26923"></ellipse>
+								</svg>
+								{Math.round(top_10_holder_rate * 100)}%
+							</div>
+						)}
+						{creator_balance_rate > 0 && (
+							<div className={st.field} style={{ color: 'rgb(158, 229, 181)' }}>
+								<svg
+									width="12px"
+									height="12px"
+									viewBox="0 0 20 20"
+									xmlns="http://www.w3.org/2000/svg"
+									fill="currentColor">
+									<path d="M15 6C15 8.76142 12.7614 11 10 11C7.23858 11 5 8.76142 5 6C5 3.23858 7.23858 1 10 1C12.7614 1 15 3.23858 15 6Z"></path>
+									<path d="M10 8.5C10 10.9853 7.98528 13 5.5 13 3.01472 13 1 10.9853 1 8.5 1 6.01472 3.01472 4 5.5 4 7.98528 4 10 6.01472 10 8.5ZM19 8.5C19 10.9853 16.9853 13 14.5 13 12.0147 13 10 10.9853 10 8.5 10 6.01472 12.0147 4 14.5 4 16.9853 4 19 6.01472 19 8.5Z"></path>
+									<path d="M5 8C4.44772 8 4 8.44771 4 9V18C4 18.5523 4.44772 19 5 19H15C15.5523 19 16 18.5523 16 18V9C16 8.44772 15.5523 8 15 8H5ZM6.7 16H13.3C13.6866 16 14 16.3134 14 16.7C14 17.0866 13.6866 17.4 13.3 17.4H6.7C6.3134 17.4 6 17.0866 6 16.7C6 16.3134 6.3134 16 6.7 16Z"></path>
+								</svg>
+								{Math.round(creator_balance_rate * 100)}%
+							</div>
+						)}
+						{sniper_count > 0 && (
+							<div className={st.field} style={{ color: 'rgb(252, 174, 192)' }}>
+								<svg
+									width="12px"
+									height="12px"
+									viewBox="0 0 20 20"
+									xmlns="http://www.w3.org/2000/svg"
+									fill="currentColor">
+									<path d="M10.361 12.7005C11.8521 12.7005 13.0608 11.4917 13.0608 10.0006C13.0608 8.50955 11.8521 7.30078 10.361 7.30078C8.8699 7.30078 7.66113 8.50955 7.66113 10.0006C7.66113 11.4917 8.8699 12.7005 10.361 12.7005Z"></path>
+									<path d="M12.3613 1V2.25204C15.1725 2.97559 17.3857 5.18879 18.1093 8H19.3613V12H18.1093C17.3857 14.8112 15.1725 17.0244 12.3613 17.748V19H8.36133V17.748C5.55011 17.0244 3.33692 14.8112 2.61336 12H1.36133V8H2.61336C3.33692 5.18879 5.55011 2.97559 8.36133 2.25204V1H12.3613ZM10.3613 4C7.04762 4 4.36133 6.68629 4.36133 10C4.36133 13.3137 7.04762 16 10.3613 16C13.675 16 16.3613 13.3137 16.3613 10C16.3613 6.68629 13.675 4 10.3613 4Z"></path>
+								</svg>
+								{sniper_count}
+							</div>
+						)}
+					</div>
+					{volume_1h > 0 && (
+						<div className={st.digit}>
+							<span style={{ color: 'var(--color-f2)' }}>V</span>
+							<span style={{ color: 'rgb(148, 216, 255)' }}>
+								{formatNumber(volume_1h)}
+							</span>
+						</div>
+					)}
+					{market_cap > 0 && (
+						<div className={st.digit}>
+							<span style={{ color: 'var(--color-f2)' }}>MC</span>
+							<span style={{ color: 'rgb(148, 216, 255)' }}>
+								{formatNumber(market_cap)}
+							</span>
+						</div>
+					)}
+				</div>
 			</div>
 		</div>
 	);
@@ -78,4 +195,98 @@ function startAndEnd(str: string) {
 		);
 	}
 	return str;
+}
+const IconUser = () => (
+	<svg
+		width="14px"
+		height="14px"
+		viewBox="0 0 12 12"
+		xmlns="http://www.w3.org/2000/svg"
+		fill="#717779">
+		<g clipPath="url(#84clip0_12019_183)">
+			<path d="M10.5726 3.22303C10.5726 4.11371 9.85055 4.83574 8.9599 4.83574 8.06925 4.83574 7.34723 4.11371 7.34723 3.22303 7.34723 2.33236 8.06925 1.61032 8.9599 1.61032 9.85055 1.61032 10.5726 2.33236 10.5726 3.22303ZM8.25745 11.2298C8.43515 10.807 8.43407 10.211 8.43272 9.46178 8.4326 9.39538 8.43247 9.32778 8.43247 9.25898 8.43247 8.19989 7.73051 6.992 7.07 6.2872H8.74682C10.4037 6.2872 11.7468 7.63035 11.7468 9.2872V9.72981C11.7468 10.5582 11.0753 11.2298 10.2468 11.2298H8.25745ZM5.85436 2.85768C5.85436 3.96712 4.95501 4.86649 3.84561 4.86649 2.7362 4.86649 1.83685 3.96712 1.83685 2.85768 1.83685 1.74825 2.7362.848877 3.84561.848877 4.95501.848877 5.85436 1.74825 5.85436 2.85768ZM.222412 9.54857C.222412 7.58875 1.81116 6 3.77098 6 5.73081 6 7.31955 7.58875 7.31955 9.54857V10.4019C7.31955 10.8577 6.95003 11.2273 6.4942 11.2273H1.04777C.591937 11.2273.222412 10.8577.222412 10.4019V9.54857Z"></path>
+		</g>
+		<defs>
+			<clipPath id="84clip0_12019_183">
+				<rect width="12" height="12"></rect>
+			</clipPath>
+		</defs>
+	</svg>
+);
+const IconBot = () => (
+	<svg
+		width="14px"
+		height="14px"
+		viewBox="0 0 16 16"
+		xmlns="http://www.w3.org/2000/svg"
+		fill="#717779">
+		<g clipPath="url(#32clip0_11995_22049)">
+			<path d="M11.9774 0.252014C12.3088 0.252014 12.5774 0.520643 12.5774 0.852014V2.73711C13.3561 3.01065 13.9143 3.75241 13.9143 4.62457V6.78318L14.8779 6.47524C14.9641 6.42736 15.0633 6.40009 15.1689 6.40009C15.5003 6.40009 15.7689 6.66871 15.7689 7.00009V11.6314C15.7689 11.9628 15.5003 12.2314 15.1689 12.2314C15.078 12.2314 14.9919 12.2112 14.9147 12.1751L13.9143 11.9697V13.0743C13.9143 14.1788 13.0189 15.0743 11.9143 15.0743H4.4026C3.29803 15.0743 2.4026 14.1788 2.4026 13.0743V11.8108L1.10986 12.1704C1.03019 12.2095 0.940584 12.2314 0.84585 12.2314C0.514479 12.2314 0.24585 11.9628 0.24585 11.6314V7.00009C0.24585 6.66871 0.514479 6.40009 0.84585 6.40009C0.954855 6.40009 1.05707 6.42915 1.14517 6.47996L2.4026 6.88179V4.62457C2.4026 3.82912 2.86698 3.14213 3.53943 2.81991V0.852625C3.53943 0.521254 3.80806 0.252625 4.13943 0.252625C4.4708 0.252625 4.73943 0.521254 4.73943 0.852625V2.62457H11.3774V0.852014C11.3774 0.520643 11.646 0.252014 11.9774 0.252014ZM6.93946 7.40613C6.93946 6.75353 6.41042 6.22449 5.75782 6.22449C5.10522 6.22449 4.57618 6.75353 4.57618 7.40613C4.57618 8.05874 5.10522 8.58777 5.75782 8.58777C6.41042 8.58777 6.93946 8.05874 6.93946 7.40613ZM11.4245 7.40613C11.4245 6.75353 10.8955 6.22449 10.2429 6.22449C9.59027 6.22449 9.06123 6.75353 9.06123 7.40613C9.06123 8.05874 9.59027 8.58777 10.2429 8.58777C10.8955 8.58777 11.4245 8.05874 11.4245 7.40613Z"></path>
+		</g>
+		<defs>
+			<clipPath id="32clip0_11995_22049">
+				<rect width="16" height="16"></rect>
+			</clipPath>
+		</defs>
+	</svg>
+);
+const IconCrown = () => (
+	<svg
+		width="14px"
+		height="14px"
+		viewBox="0 0 16 16"
+		xmlns="http://www.w3.org/2000/svg"
+		fill="rgb(244, 199, 122)">
+		<path d="M8.00007 1C8.21565 1 8.41979 1.09487 8.55786 1.25835L11.7703 5.0752L14.4949 3.27689C14.6155 3.19752 14.7569 3.15557 14.9013 3.15633C15.0457 3.15708 15.1866 3.2005 15.3064 3.28113C15.5508 3.44588 15.6698 3.74108 15.6071 4.02739L13.7918 12.2926C13.7558 12.4537 13.6659 12.5976 13.5368 12.7006C13.4078 12.8036 13.2475 12.8594 13.0824 12.8588H2.91772C2.75264 12.8594 2.59231 12.8036 2.46329 12.7006C2.33428 12.5976 2.24431 12.4537 2.2083 12.2926L0.393056 4.02739C0.362558 3.88719 0.374925 3.74106 0.42855 3.60798C0.482175 3.4749 0.57458 3.36102 0.693762 3.28113C0.813539 3.2005 0.954479 3.15708 1.09886 3.15633C1.24325 3.15557 1.38463 3.19752 1.50524 3.27689L4.22981 5.0752L7.44228 1.25835C7.58077 1.09487 7.78449 1 8.00007 1ZM2.07066 14.694C2.07066 14.3043 2.4027 13.9884 2.81183 13.9884H13.1883C13.453 13.9884 13.6978 14.1226 13.8304 14.3412C13.8954 14.4475 13.9297 14.5696 13.9297 14.6942C13.9297 14.8188 13.8954 14.9409 13.8304 15.0472C13.6978 15.2653 13.4534 15.4 13.1883 15.4H2.81183C2.4027 15.4 2.07066 15.084 2.07066 14.694ZM6.8883 9.75308C6.8883 10.1427 7.22035 10.4587 7.62948 10.4587H8.37066C8.77979 10.4587 9.11183 10.1427 9.11183 9.75308C9.11183 9.36343 8.77979 9.04706 8.37066 9.04706H7.62948C7.22035 9.04706 6.8883 9.36301 6.8883 9.75308Z"></path>
+	</svg>
+);
+const IconPray = () => (
+	<svg
+		width="14px"
+		height="14px"
+		viewBox="0 0 14 14"
+		xmlns="http://www.w3.org/2000/svg"
+		fill="rgb(244, 199, 122)">
+		<path
+			fillRule="evenodd"
+			clipRule="evenodd"
+			d="M3.49922 8.0498C3.49922 7.08331 2.71572 6.2998 1.74922 6.2998L0.699219 9.7998H3.49922V8.0498ZM9.68965 7.59928C10.44 6.98533 11.3797 6.6499 12.3492 6.6499H12.389C13.0469 6.6499 13.3414 7.4751 12.8323 7.89167L10.5 9.7999H10.4992L6.29927 13.2998H0.699268V9.79982H7.0001L9.68965 7.59928Z"></path>
+		<circle cx="7" cy="3.5" r="3.5"></circle>
+	</svg>
+);
+function formatNumber(num: number): string {
+	const absNum = Math.abs(num);
+
+	// Define units with thresholds and suffixes
+	const units = [
+		{ threshold: 1e12, suffix: 'T' },
+		{ threshold: 1e9, suffix: 'B', nextThreshold: 1e12, nextSuffix: 'T' },
+		{ threshold: 1e6, suffix: 'M', nextThreshold: 1e9, nextSuffix: 'B' },
+		{ threshold: 1e3, suffix: 'K', nextThreshold: 1e6, nextSuffix: 'M' },
+	];
+
+	for (const unit of units) {
+		if (absNum >= unit.threshold) {
+			let value = num / unit.threshold;
+			const roundedValue = Math.round(value * 100) / 100; // Round to 2 decimals
+
+			// Check if we should use the next larger unit
+			if (unit.nextThreshold && Math.abs(roundedValue) >= 1000) {
+				value = num / unit.nextThreshold;
+				return (
+					new Intl.NumberFormat('en-US', {
+						maximumFractionDigits: 2,
+					}).format(value) + unit.nextSuffix
+				);
+			}
+			return (
+				new Intl.NumberFormat('en-US', {
+					maximumFractionDigits: 2,
+				}).format(value) + unit.suffix
+			);
+		}
+	}
+
+	// For numbers below 1000
+	return Math.round(num).toString();
 }

@@ -3,14 +3,12 @@ import { create } from 'zustand';
 
 type State = {
 	tokens: { title: string; data: Token[] }[] | null;
-	fetchTokens: () => number;
+	fetchTokens: () => void;
 };
 
 export const useTokenStore = create<State>((set) => ({
 	tokens: null,
 	fetchTokens: () => {
-		let intervalId = 0;
-
 		const func = async () => {
 			const res = await API.getTokens();
 
@@ -26,12 +24,6 @@ export const useTokenStore = create<State>((set) => ({
 				],
 			});
 		};
-
 		func();
-		// intervalId = window.setInterval(() => {
-		// 	func();
-		// }, 1000);
-
-		return intervalId;
 	},
 }));

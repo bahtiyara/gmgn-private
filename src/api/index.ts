@@ -12,6 +12,6 @@ export const API = {
 		new Promise<GetTokensResp>((resolve) => {
 			setTimeout(() => {
 				resolve(tokenData);
-			}, 250);
+			}, 10);
 		}),
 };

@@ -11,11 +11,7 @@ export function HomePage() {
 	const tokens = useTokenStore((s) => s.tokens);
 
 	useEffect(() => {
-		const interval = fetchTokens();
-
-		return () => {
-			window.clearInterval(interval);
-		};
+		fetchTokens();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
@@ -108,8 +104,8 @@ const ChevronDown2 = () => (
 		style={{ marginLeft: 9.5, marginTop: 1.5 }}
 		fill="currentColor">
 		<path
-			fill-rule="evenodd"
-			clip-rule="evenodd"
+			fillRule="evenodd"
+			clipRule="evenodd"
 			d="M1.46967 3.46967C1.76256 3.17678 2.23744 3.17678 2.53033 3.46967L6 6.93934L9.46967 3.46967C9.76256 3.17678 10.2374 3.17678 10.5303 3.46967C10.8232 3.76256 10.8232 4.23744 10.5303 4.53033L6.53033 8.53033C6.23744 8.82322 5.76256 8.82322 5.46967 8.53033L1.46967 4.53033C1.17678 4.23744 1.17678 3.76256 1.46967 3.46967Z"></path>
 	</svg>
 );
