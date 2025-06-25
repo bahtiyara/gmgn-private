@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useTokenStore } from '@/store/token';
 import { IconSettings } from '@/icons/settings';
 import { TokenItem } from '@/components/token-item';
+import { IconSearch } from '@/icons/search';
 
 export function HomePage() {
 	const fetchTokens = useTokenStore((s) => s.fetchTokens);
@@ -54,7 +55,7 @@ const Toolbar = () => (
 		<div className={st.right}>
 			<IconCustomize />
 			<span>Customize</span>
-			<IconSearch />
+			<IconInlineSearch />
 			<span>Filter</span>
 			<div className={st.settingsContainer}>
 				<IconSettings width={'14px'} height={'14px'} />
@@ -69,12 +70,32 @@ const Controls = ({ defaultSolValue }: { defaultSolValue: string }) => (
 			<IconSolana />
 			<input type="text" defaultValue={defaultSolValue} />
 		</div>
+		<div className={st.priority}>
+			<span>P1</span>
+			<svg
+				width="12px"
+				height="12px"
+				viewBox="0 0 16 16"
+				xmlns="http://www.w3.org/2000/svg"
+				fill="var(--color-f2)">
+				<path d="M14.1675 4.68644C13.9137 4.4326 13.5021 4.4326 13.2483 4.68644L8.00007 9.93467L2.75184 4.68644C2.498 4.4326 2.08644 4.4326 1.8326 4.68644C1.57876 4.94028 1.57876 5.35184 1.8326 5.60568L7.54045 11.3135C7.79429 11.5674 8.20584 11.5674 8.45968 11.3135L14.1675 5.60568C14.4214 5.35184 14.4214 4.94028 14.1675 4.68644Z"></path>
+			</svg>
+		</div>
+		<div className={st.sol} style={{ width: 108 }}>
+			<IconSearch width={'12px'} height={'12px'} style={{ left: 8 }} />
+			<input
+				placeholder="Search"
+				type="text"
+				style={{ padding: '0 25px', position: 'relative', top: -0.5 }}
+			/>
+		</div>
 		<div
 			style={{
 				padding: 6,
 				display: 'flex',
 				color: 'var(--color-f2)',
 				backgroundColor: 'rgb(31, 32, 36)',
+				borderRadius: 6,
 			}}>
 			<IconVoice />
 		</div>
@@ -115,7 +136,7 @@ const IconCustomize = () => (
 	</svg>
 );
 
-const IconSearch = () => (
+const IconInlineSearch = () => (
 	<svg
 		width="16px"
 		height="16px"
