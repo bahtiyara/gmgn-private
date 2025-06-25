@@ -44,7 +44,8 @@
 
 .body {
 	display: flex;
-	height: calc(100% - 49px);
+	flex: 1;
+	min-height: 0;
 }
 
 .col {
@@ -61,7 +62,7 @@
 
 .colHeader {
 	display: flex;
-	padding: 17px 12px 0 12px;
+	padding: 17px 12px 8px 12px;
 
 	.left {
 		font-size: 12px;
@@ -72,8 +73,8 @@
 }
 
 .colList {
+	flex: 1;
 	overflow-y: auto;
-	height: calc(100% - 41px);
 }
 
 .controls {
@@ -107,6 +108,8 @@
 			outline: 0;
 			padding: 0 4px 0 22px;
 			background-color: transparent;
+			position: relative;
+			top: -0.5px;
 		}
 
 		svg {
@@ -129,5 +132,6 @@
 		font-size: 12px;
 		font-weight: 500;
 		padding: 0 8px;
+		cursor: pointer;
 	}
 }

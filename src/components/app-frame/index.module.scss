@@ -9,5 +9,6 @@
 .main {
 	display: flex;
 	flex-direction: column;
-	height: calc(100% - 96px);
+	flex: 1;
+	min-height: 0;
 }

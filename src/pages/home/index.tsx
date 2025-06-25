@@ -83,11 +83,7 @@ const Controls = ({ defaultSolValue }: { defaultSolValue: string }) => (
 		</div>
 		<div className={st.sol} style={{ width: 108 }}>
 			<IconSearch width={'12px'} height={'12px'} style={{ left: 8 }} />
-			<input
-				placeholder="Search"
-				type="text"
-				style={{ padding: '0 25px', position: 'relative', top: -0.5 }}
-			/>
+			<input placeholder="Search" type="text" style={{ padding: '0 25px' }} />
 		</div>
 		<div
 			style={{
